@@ -22,13 +22,24 @@ export default class counter extends Component {
     );
   }
 
+  handleIncrement = (product) => {
+    console.log(product);
+    this.setState({ count: this.state.count + 1 });
+  };
+
   render() {
     return (
       <React.Fragment>
         <span style={this.styles} className={this.getBadgesClasses()}>
           {this.formatCount()}
         </span>
-        <button className="btn btn-secondary btn-sm">Increment</button>
+        <button
+          onClick={() => this.handleIncrement({ id: 1 })}
+          className="btn btn-secondary btn-sm"
+        >
+          Increment
+        </button>
+        {this.state.tags.length === 0 && <p>Insert new Tags!</p>}
         <div>{this.renderTags()}</div>
       </React.Fragment>
     );
